@@ -76,16 +76,22 @@
     </style>
 
     <script>
+      //select all inputs
       const inputs = document.querySelectorAll('.controls input');
       function handleUpdate() {
+        //grab data- for the suffix such as px or nothing
         const suffix = this.dataset.sizing || '';
+
+        //setproperty to selected input
         document.documentElement.style.setProperty(
           `--${this.name}`,
           this.value + suffix
         );
       }
 
+      //detect change 
       inputs.forEach((input) => input.addEventListener('change', handleUpdate));
+      //actively change based on mouse movement
       inputs.forEach((input) =>
         input.addEventListener('mousemove', handleUpdate)
       );
